@@ -1,0 +1,66 @@
+ body{
+  background:url(../images/loading-bg.jpg);
+  background-size:100%;
+  width:100%;
+  }
+  #landing{
+  width:370px;
+  height:260px;
+  background:white;
+  z-index:1;
+ float:right;
+ position:relative;
+ right:10%;
+ border:1px white soild;
+  }
+  #picture{
+  float:left;
+  position:relative;
+  left:10%;}
+
+  #head{
+  width:100%;
+  height:150px;
+  padding:20px;
+  font-size:40px;
+  font-family:"ºÚÌå";
+  color:white;
+
+  }
+  hr{
+  width:100%;
+  height:8px;
+  color:#0069d2;
+  }
+  #foot{
+width:100%;
+height:40px;
+position:fixed;
+bottom:0;
+color:white;
+line-height:50px;
+text-align:center;
+}
+#landing-head{
+width:100%;
+height:50px;
+background:#0099e3;
+line-height:50px;
+text-align:center;
+color:white;
+font-size:28px;
+font-family:"ËÎÌå";
+}
+#landing-body{
+padding:30px;
+width:100%;
+background:#eaeaea;
+}
+#password-Promptbox{
+color:#ff0066;
+background:#cdcdcd;
+border:1px #ff0066 solid;
+float:right;
+font-size:12px;
+display:none;
+}

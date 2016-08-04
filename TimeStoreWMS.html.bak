@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/TimeStore.css">
+  <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery
+/jquery-1.4.min.js"></script>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script> 
+ 
+
+  <script src="js/timeStore.js"></script> <!-- 基本页面的切换js代码 -->
+  <script src="js/chooseDate.js"></script> <!-- 选择日期		js代码 -->
+ <script src="js/searchUser.js"></script> <!-- 查询用户			 js代码-->
+ <script src="js/userList.js"></script> <!-- 用户列表		  js代码 -->
+ <script src="js/userReport.js"></script> <!--用户报表				 js代码-->
+
+ <script src="js/addPost.js"></script> <!-- 添加帖子		  js代码 -->
+ <script src="js/postList.js"></script> <!-- 帖子列表			 js代码 -->
+ <script src="js/postReport.js"></script> <!-- 帖子报表			js代码 -->
+
+ <script src="js/searchChat.js"></script> <!-- 查询聊天信息    js代码 -->
+ <script src="js/chatList.js"></script> <!-- 聊天列表		   js代码 -->
+ <script src="js/chatReport.js"></script> <!-- 聊天报表			js代码 -->
+
+ <script src="js/#marqueeList.js"></script> <!-- 跑马灯列表		   js代码 -->
+
+<script src="js/systemList.js"></script> <!-- 系统列表		   js代码 -->
+
+ <script src="js/adminList.js"></script> <!-- 管理员列表		   js代码 -->
+
+
+  <title>时光商店后台管理系统</title>
+ </head>
+ <body >
+
+
+
+ <!--start  头部head -->
+  <div id="head" >
+		<div id="head-left" class="">
+			<span class="left">
+				<strong><img src="images/logo.png" width="40" height="40" alt="LOGO" /> &nbsp;伯爵科技 | </strong> 
+			</span>
+			<span class="right">时光商店后台管理系统1.0</span>
+		</div>
+		<div id="head-right" class="">
+			<a ><span class="glyphicon glyphicon-home">&nbsp;时光商店</span></a>
+			<a data-toggle="modal"href="#ContactUs"><span class="glyphicon glyphicon-user">&nbsp;联系我们</span></a>
+			<a href="Load.html"><span class="glyphicon glyphicon-off">&nbsp;退出</span></a>		
+		</div>
+  </div>
+<!-- end  头部head -->
+
+
+
+<!-- strat 竖直总导航条 -->
+  <div id="mynav">
+	  <ul class="nav  nav-tabs nav-stacked">
+		<li class="Nav"><a ><strong>用户管理<span class="glyphicon glyphicon-user"></span></strong></a></li>
+		<li class="Nav"><a><strong>帖子管理<span class="glyphicon glyphicon-edit"></span></strong></a></li>
+		<li class="Nav"><a><strong>聊天管理<span class="glyphicon glyphicon-comment"></span></strong></a></li>
+		<li class="Nav"><a><strong>跑马灯管理<span class="glyphicon glyphicon-road"></span></strong></a></li>
+		<li class="Nav"><a><strong>系统管理<span class="glyphicon glyphicon-info-sign"></span></strong></a></li>
+		<li class="Nav"><a ><strong>管理员管理<span class="glyphicon glyphicon-asterisk"></span></strong></a></li>
+	 </ul>
+  </div>
+<!--end  竖直总导航条 -->
+
+
+<!-- start 用户管理 -->
+<div id="" class="Manage">
+
+	<!--start 用户管理 子导航-->
+	<div id="user" class="zinav">
+		<ul class="nav nav-tabs">
+		<li class="zinavLi"><a >查询用户</a></li>
+		<li class="zinavLi"id="userListGet"><a>用户列表</a></li>
+		<li class="zinavLi"id="userReportGet"><a>用户报表</a></li>
+		</ul>
+	</div>
+	<!--end 用户管理 子导航-->
+
+	<!-- start 查询用户 -->
+	<div id="searchUser" class="display">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<form class="form-inline" role="form"  >
+			  <div class="form-group">
+				<input style="width:250px;"type="text" class="form-control" id="user_name" placeholder="请输入用户名或用户账户进行查询">
+			  </div>
+			  <button type="submit" id="search"class="btn btn-primary btn-sm">查询</button>
+			</form>  
+		</div>
+
+	<div class="panel-body">
+		<p>通过查询用户，您可以进行以下操作：查看用户具体信息，删除用户及其相关评论，请求，聊天，帖子等。</p>
+		<table class="table table-bordered table-hover"id="searchUserTable">
+			<thead>
+				<tr>
+					<th>用户ID</th>
+					<th>用户账号</th>
+					<th>用户昵称</th>
+					<th>个人资料</th>
+					<th>评论</th>
+					<th>请求</th>
+					<th>聊天</th>
+					<th>帖子</th>
+					<th>删除用户</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+ </div>
+	
+</div>
+<!-- end 查询用户 -->
+
+
+<!-- start 用户列表 -->
+	<div id="userList" class="display">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			用户列表
+		</div>
+
+	<div class="panel-body">
+		<p>您可以进行以下操作：查看用户具体信息，删除用户及其相关评论，请求，聊天，帖子等。</p>
+		<table class="table table-bordered table-hover" id="userListTable">
+			<thead>
+				<tr>
+					<th>用户ID</th>
+					<th>用户账号</th>
+					<th>用户昵称</th>
+					<th>个人资料</th>
+					<th>评论</th>
+					<th>请求</th>
+					<th>聊天</th>
+					<th>帖子</th>
+					<th>删除用户</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>001</td>
+					<td>905179839@163.com</td>
+					<td>青玉</td>
+					<td><a class="popUserData">具体个人资料</a></td>
+					<td><a class="popUserComment">225</a></td>
+					<td><a class="popUserRequest">5</a></td>
+					<td><a class="pop">652</a></td>
+					<td><a class="pop">8</a></td>
+					<td><a class="delUser">删除该用户</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+ </div>
+</div>
+	<!-- end 用户列表 -->
+
+
+	<!-- start 用户报表 -->
+	<div id="userReport" class="display">
+		<table class="table table-striped table-bordered table-hover">
+   <thead>
+     <tr class=" list-group-item-info">
+       <th>当前系统总用户数</th>
+       <th id="userAmount">1205893</th>
+     </tr>
+	  <tr>
+       <td colspan="2"id="show"class=" list-group-item-warning"><center>按学校归类统计&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-down" style="floar:right;"></span></center></td>
+     </tr>
+   </thead>
+
+	<tbody id="userReport_1">
+		<tr class="tog">
+			<td>广东海洋大学</td>
+			<td>12030</td>
+		</tr>
+		 <tr class="tog">
+			<td>清华大学</td>
+			<td>15200</td>
+		 </tr>
+	</tbody>
+</table>
+
+	<table class="table table-striped table-bordered table-hover">
+	<thead>
+     <tr class=" list-group-item-info">
+       <th>当天曾登陆过的用户数量</th>
+       <th id="userAmountToday">20141</th>
+     </tr>
+	   <tr>
+       <td colspan="2" id="checkUser"class=" list-group-item-warning"><center>查看用户&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-down" style="floar:right;"></span></center></td>
+     </tr>
+	</thead>
+	 <tbody id="checkUserTable">
+		<tr>
+		<td>Tom</td>
+		<td>Tom</td>
+		</tr>
+		<tr>
+			<td>Tom</td>
+			<td>Tom</td>
+		</tr>
+	</tbody>
+
+ </table>
+ <form method="post"role="form" action=""class="form-inline">
+	<div class="form-group">
+	 <input type="text" style="width:180px;height:30px" placeholder="根据具体日期查询注册用户"onfocus="HS_setDate(this)">
+	 <input type="button" value="查询"id="userReportSearch" class="btn btn btn-primary btn-sm">
+	</div>
+ </form>
+	</div>
+	<!-- end 用户报表 -->
+
+</div>
+<!-- end 用户管理 -->
+
+
+
+<!-- start 帖子管理 -->
+<div id="" class="Manage">
+	<!--start 帖子管理 子导航 -->
+	<div id="post" class="zinav">
+		<ul class="nav nav-tabs">
+		<li class="zinavLi"><a >添加帖子</a></li>
+		<li class="zinavLi"id="postListGet"><a >帖子列表</a></li>
+		<li class="zinavLi"id="postReportGet"><a >帖子报表</a></li>
+		</ul>
+	</div>
+	<!--end 帖子管理 子导航 -->
+
+
+	<!--start 添加帖子addPost -->
+	<div id="addPost" class="display">
+		<div id="postEdit">
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+			<label for=" " class="col-sm-2 control-label">帖子标题</label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="postHead" placeholder="请输入帖子标题">
+			</div>
+		  </div>
+
+			 <div class="form-group">
+				<label for=" " class="col-sm-2 control-label">帖子正文</label>
+				<textarea cols="100" rows="15"placeholder="请输入帖子正文"></textarea>
+			 </div>
+		     <center><button class="btn btn-primary" type="button">确认添加</button> 
+			 <button class="btn btn-primary" type="button">保存草稿</button> </center>
+		</form>
+		</div>
+	</div>
+	<!--end 添加帖子addPost -->
+
+	
+
+	
+	<!--start  帖子列表postList-->
+	<div id="postList" class="display">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			管理员，您好！
+		</div>
+
+	<div class="panel-body">
+		<p>您可以进行一下操作：查看帖子详细信息，查看其评论列表、点赞列表、请求列表，删除帖子，为帖子评论、点赞等操作。
+		</p>
+		<table class="table table-bordered table-hover"id="postListTable">
+			<thead>
+				<tr>
+					<th>帖子ID</th>
+					<th>发布者</th>
+					<th>需求内容</th>
+					<th>评论列表</th>
+					<th>点赞列表</th>
+					<th>请求列表</th>
+					<th>具体操作</th>
+					<th>删除帖子</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>20141162132</td>
+					<td>天线宝宝</td>
+					<td><a class="pop">找人代课有木有！！！</a></td>
+					<td><a class="commentNum pop">50</a></td>
+					<td><a class="pop">2580</a></td>
+					<td><a class="pop">55</a></td>
+					<td><a class="like">点赞</a>&brvbar;<a class="comment">评论</a></td>
+					<td><a  class="delRow">删除该帖子</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+</div>
+
+	</div>
+	<!--end  帖子列表postList-->
+
+
+	<!-- start 帖子报表postReport-->
+	<div id="postReport" class="display">
+			<table class="table table-striped table-bordered table-hover">
+   <thead>
+     <tr class=" list-group-item-info">
+       <th>当前帖子总数</th>
+       <th class="postNum">1205893</th>
+     </tr>
+	  <tr>
+       <td colspan="2"id="showPostReport_1"class=" list-group-item-warning"><center>归类统计&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-down" style="floar:right;"></span></center></td>
+     </tr>
+   </thead>
+
+	<tbody id="postReport_1">
+		<tr class="tog">
+			<td >已完成</td>
+			<td class="postNum">12030</td>
+		</tr>
+		 <tr class="tog">
+			<td>等待中</td>
+			<td class="postNum">15200</td>
+		 </tr>
+	</tbody>
+</table>
+
+	<table class="table table-striped table-bordered table-hover">
+	<thead>
+     <tr class=" list-group-item-info">
+       <th colspan="2"><center>全部帖子流通的金额与时间</center></th>
+     </tr>
+	   <tr>
+       <td colspan="2" id="showPostReport_2"class=" list-group-item-warning"><center>查看&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-down" style="floar:right;"></span></center></td>
+     </tr>
+	</thead>
+	 <tbody id="postReport_2">
+		<tr>
+		<td><span class="glyphicon glyphicon-usd"></span></td>
+		<td class="postNum">&yen;&nbsp;&nbsp;15250</td>
+		</tr>
+		<tr>
+			<td><span class="glyphicon glyphicon-time"></span></td>
+			<td class="postNum">16406&nbsp;&nbsp;hours</td>
+		</tr>
+	</tbody>
+
+ </table>
+ <form method="post"role="form" action=""class="form-inline">
+	<div class="form-group">
+	 <input type="text" style="width:300px;" class="form-control" placeholder="根据具体时间查询当天帖子数量">
+	 <input type="button" value="查询" class="btn btn btn-primary btn-sm">
+	</div>
+ </form>
+	</div>
+	<!-- end 帖子报表postReport-->
+
+</div>
+<!-- end 帖子管理 -->
+
+
+<!-- start 聊天管理 -->
+<div class="Manage">
+	<!-- start 聊天管理 子导航 -->
+	<div id="chat" class="zinav">
+		<ul class="nav nav-tabs">
+		<li class="zinavLi"><a>查询聊天信息</a></li>
+		<li class="zinavLi"id="chatListGet"><a>聊天列表</a></li>
+		<li class="zinavLi"id="chatReportGet"><a>聊天报表</a></li>
+		</ul>
+	</div>
+	<!-- end 聊天管理 子导航 -->
+
+
+	<!-- start 查询聊天信息searchChat-->
+	<div id="searchChatList" class="display">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<form class="form-inline" role="form">
+			  <div class="form-group">
+				<input style="width:250px;"type="text" class="form-control" id="chatUser" placeholder="请输入用户名或用户账户进行查询">
+			  </div>
+			  <button type="submit"id="searchChat" class="btn btn-primary btn-sm">查询</button>
+			</form>  
+		</div>
+
+	<div class="panel-body">
+		<p>通过查询用户，您可以查看该用户的聊天信息。</p>
+		<table class="table table-bordered table-hover"id="chatListTable">
+			<thead>
+				<tr>
+					<th>聊天记录ID</th>
+					<th>发送方ID</th>
+					<th>接收方ID</th>
+					<th>聊天信息</th>
+					<th>聊天时间</th>
+					<th>是否被查阅</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>002</td>
+					<td>20141168</td>
+					<td>20141156</td>
+					<td><a class="pop">啦啦啦啦啦啦啦啦啦啦啦</a></td>
+					<td>2015/05/24</td>
+					<td>是</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+ </div>
+	</div>
+	<!-- end 查询聊天信息searchChat-->
+
+
+	<!--start 聊天列表chatList -->
+	<div id="chatList" class="display">
+			<div class="panel panel-default">
+		<div class="panel-heading">
+			聊天列表
+		</div>
+
+	<div class="panel-body">
+		<p>您可以查看用户的具体聊天信息。</p>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>聊天记录ID</th>
+					<th>发送方ID</th>
+					<th>接收方ID</th>
+					<th>聊天信息</th>
+					<th>聊天时间</th>
+					<th>是否被查阅</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>002</td>
+					<td>20141168</td>
+					<td>20141156</td>
+					<td><a class="pop">啦啦啦啦啦啦啦啦啦啦啦</a></td>
+					<td>2015/05/24</td>
+					<td>是</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+ </div>
+	</div>
+	<!--end 聊天列表chatList -->
+
+
+	<!--  start聊天报表chatReport-->
+	<div id="chatReport" class="display">
+	<table class="table table-striped table-bordered table-hover">
+   <thead>
+     <tr class=" list-group-item-info">
+       <th>当前聊天数目</th>
+       <th id="chatNum">1205893</th>
+     </tr>
+   </thead>
+</table>
+
+ <form method="post"role="form" action=""class="form-inline">
+	<div class="form-group">
+	 <input type="text"style="width:300px;" class="form-control" placeholder="根据用户名查询其聊天数目">
+	<input type="button" value="查询" onclick=""class="btn btn btn-primary btn-sm">
+	</div>
+ </form>
+
+	</div>
+	<!--  end聊天报表chatReport-->
+
+
+</div>
+<!-- end 聊天管理 -->
+
+
+
+<!--start 跑马灯管理 -->
+<div class="Manage">
+	<!-- start跑马灯管理 子导航 -->
+	<div id="marquee" class="zinav">
+		<ul class="nav nav-tabs">
+		<li class="zinavLi"><a >跑马灯列表</a></li>
+		</ul>
+	</div>
+	<!-- end跑马灯管理 子导航 -->
+
+
+	<!-- start跑马灯列表marqueeList -->
+	<div id="marqueeList" class="display">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			跑马灯列表
+		</div>
+
+	<div class="panel-body">
+		<p>您可以进行一下操作：修改跑马灯信息及序号，添加、删除跑马灯
+		<button class="btn btn-primary btn-sm"id="addMarquee" type="button"style="float:right;">添加跑马灯</button> 
+		</p><br />
+		<table class="table table-bordered table-hover"id="marqueeListTable">
+			<thead>
+				<tr>
+					<th>图片ID</th>
+					<th>主题</th>
+					<th>序列</th>
+					<th>添加时间</th>
+					<th>图片路径</th>
+					<th>具体操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0012</td>
+					<td>维他柠檬茶大促销</td>
+					<td><span class="">1</span>&nbsp;<span class="glyphicon glyphicon-chevron-up"></span>&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></td>
+					<td>2015/02/09</td>
+					<td>http://baidu.com/……</td>
+					<td><a class="update">修改</a>&brvbar;<a class="delRow">删除</a></td>
+				</tr>
+				<tr>
+					<td>0012</td>
+					<td>维他柠檬茶大促销</td>
+					<td><span class="">1</span></span>&nbsp;<span class="glyphicon glyphicon-chevron-up"></span>&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></td>
+					<td>2015/02/09</td>
+					<td>http://baidu.com/……</td>
+					<td><a class="update">修改</a>&brvbar;<a class="delRow">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+</div>
+	</div>
+	<!-- end跑马灯列表marqueeList -->
+
+</div>
+<!-- end 跑马灯管理 -->
+
+
+<!-- start 系统管理 -->
+<div class="Manage">
+	<!--start 系统管理 子导航 -->
+	<div id="system" class="zinav">
+		<ul class="nav nav-tabs">
+		<li class="zinavLi"><a>系统信息</a></li>
+		</ul>
+	</div>
+	<!--end 系统管理 子导航 -->
+
+	<!--start 查看系统信息checkSystem -->
+	<div id="checkSystem" class="display">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			系统列表
+		</div>
+
+	<div class="panel-body">
+		<p>您可以进行一下操作：查看或修改系统信息。<button class="btn btn-primary btn-sm" type="button"style="float:right;"id="allUpdate">一键修改</button> 
+		</p><br />
+		<table class="table table-bordered table-hover"id="checkSystemTable">
+			
+			<tbody id="SystemTable">
+				<tr>
+					<th>系统名称</th>
+					<td>system-9</td>
+					<td><a class="SystemUpdate">修改</a></td>
+				</tr>
+				<tr>
+					<th>系统版本号</th>
+					<td>version-08Ku67</td>
+					<td><a class="SystemUpdate">修改</a></td>
+				</tr>
+				<tr>
+					<th>本次更新内容</th>
+					<td>添加帖子</td>
+					<td><a class="SystemUpdate">修改</a></td>
+				</tr>
+				<tr>
+					<th>关于我们</th>
+					<td>伯爵科技团队</td>
+					<td><a class="SystemUpdate">修改</a></td>
+				</tr>
+				<tr>
+					<th>联系我们</th>
+					<td>weixin9905</td>
+					<td><a class="SystemUpdate">修改</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+	</div>
+	</div>
+	<!--end查看系统信息checkSystem -->
+
+</div>
+<!-- end 系统管理 -->
+
+
+
+<!-- start 管理员管理 -->
+<div class="Manage">
+	<!--start 管理员管理 子导航 -->
+	<div id="admin" class="zinav">
+		<ul class="nav nav-tabs">
+			<li class="zinavLi"><a >管理员列表</a></li>
+		</ul>
+	</div>
+	<!--end 管理员管理 子导航 -->
+
+		<!--start 管理员列表adminList -->
+		<div id="adminList" class="display">
+			
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			超级管理员XXX，您好！
+		</div>
+
+	<div class="panel-body">
+		<p>您可以进行一下操作：查看管理员信息信息，修改管理员信息，删除管理员等操作。<button class="btn btn-primary btn-sm" type="button"style="float:right;"id="addAdmin">添加管理员</button> 
+		</p><br />
+		<table class="table table-bordered table-hover"id="adminListTable">
+			<thead>
+				<tr>
+					<th>管理员ID</th>
+					<th>管理员帐号</th>
+					<th>管理员姓名</th>
+					<th>管理员密码</th>
+					<th>管理员权限</th>
+					<th>具体操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0012</td>
+					<td>905179839@163.com</td>
+					<td>江锦泰</td>
+					<td>123456789</td>
+					<td>0</td>
+					<td><a class="update">修改</a>&brvbar;<a  class="delRow">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">共找到<span class="record"></span>条记录</div>
+</div>
+
+		</div>
+			<!--end 管理员列表adminList -->
+	
+</div>
+	
+<!-- end 管理员管理 -->
+
+
+
+<!--start 页脚foot -->
+<div id="foot" class="">
+	<span class="glyphicon glyphicon-copyright-mark"></span>&nbsp;&nbsp;广东海洋大学伯爵科技团队
+</div>
+<!--end 页脚foot -->
+
+
+
+<!--帖子评论弹出窗口start  -->
+<div class="modal" id="postcommentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">帖子评论区</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+				  <div class="form-group">
+					<label  class="col-sm-2 control-label">帖子评论:</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" id="comment_content" placeholder="">
+					</div>
+				 </div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary sure">确认</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--帖子评论弹出窗口end  -->
+
+
+ <!-- 查看用户具体信息弹出框start --> 
+ <div id="demo" class="">
+  <a id="close"><span class="glyphicon glyphicon-remove"></span></a>  
+  <div id="list"><div>
+</div>
+ <!-- 查看用户具体信息弹出框 end--> 
+
+<!--联系我们start  -->
+<div class="modal" id="ContactUs">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">联系我们</h4><hr>
+				<div id="" class=""style="float:left;posotion:relavive;top:20px;left:20px;">
+					<img src="images/logo.jpg" width="80" height="80" border="0" alt="">
+				</div>
+				<div id="" class=""style="float:right;">
+					<p><img src="images/158745.png" width="20" height="20" border="0" alt="">&nbsp;广东省湛江市麻章区广东海洋大学</p>
+					<p><img src="images/cu.png" width="30" height="30" border="0" alt="">&nbsp;134-1360-xxxx</p>
+					<p><img src="images/cu2.png" width="30" height="30" border="0" alt="">&nbsp;xxxxxxx@163.com</p>
+				</div>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--联系我们弹出窗口end  -->
+
+ </body>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+</html>

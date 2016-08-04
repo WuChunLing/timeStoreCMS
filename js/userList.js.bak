@@ -1,0 +1,243 @@
+//用户列表
+
+$(document).ready(function(){
+
+	//用户列表get
+	$("#userListGet").click(function(){
+		//$("#userListTable tbody").empty();
+
+		var url="你的获取用户列表的url";
+
+		$.get(url, function(json){
+				
+				$str='';
+				for (var i=0;i<json.length ;i++ )
+				{
+					$str+="<tr>";
+					$str+="<td>"+json[i].userId+"</td>";//用户id
+					$str+="<td>"+json[i].userAccount+"</td>"; //用户账号
+					$str+="<td>"+json[i].userName+"</td>";  //用户昵称
+					$str+="<td>"+"<a class='popUserData'>"+"具体个人资料"+"</a>"+"</td>";//  用户具体个人资料
+					$str+="<td>"+"<a class='popUserComment'>"+json[i].commentNum+"</a>"+"</td>";    // 		评论数
+					$str+="<td>"+"<a class='popUserRequest'>"+json[i].requestNum+"</a>"+"</td>";    // 		请求数
+					$str+="<td>"+"<a class='popUserChat'>"+json[i].chatNum+"</a>"+"</td>";    // 		聊天数
+					$str+="<td>"+"<a class='popUserPost'>"+json[i].demandNum+"</a>"+"</td>";    // 		帖子数
+					$str+="<td>"+"<a class='delUser'>"+"删除该用户"+"</a>"+"</td>";
+					$str+="</tr>";
+				}
+				$("#userListTable").append($str); 
+				$("#userList .panel-footer .record").text(json.length);    
+			});
+	});
+
+
+	//查看用户具体资料
+	 $(".popUserData").click(function(){
+			$("#demo #list").empty();
+			$("#demo").css("display","block");
+			var id=$(this).parent().siblings().first().text();
+
+			var url="你的查看用户具体资料的url";
+
+			$.post(url,{
+				 userId:id
+			 },
+			 function(json){
+				
+					$str='';	
+
+					$str+="<ul>";
+					$str+="<li>"+"用户昵称："+userName+"</li>";//用户昵称
+					$str+="<li>"+"用户密码："+userPassword+"</li>"; //用户密码
+					$str+="<li>"+"用户头像："+userFacePath+"</li>";  //用户头像
+					$str+="<li>"+"用户性别："+userSex+"</li>";//  用户性别
+					$str+="<li>"+"用户生日："+userBirthday+"</li>";    //用户生日
+					$str+="<li>"+"用户所在学校："+userSchool+"</li>";    // 用户所在学校
+					$str+="<li>"+"用户等级："+userLevel+"</li>";    // 用户等级
+					$str+="<li>"+"用户经验值："+userExperience+"</li>";    // 用户经验值
+					$str+="<li>"+"用户最近一次登陆时间："+userLastLoginTime+"</li>";    // 用户最近一次登陆时间
+					$str+="<li>"+"用户个性签名："+userSign+"</li>";    // 用户个性签名
+					$str+="</ul>";
+					$("#demo").append($str); 
+			});
+			$("#close").click(function(){
+				$("#demo").css("display","none");
+			 });
+	});
+			
+
+
+	//查看评论列表
+ $(".popUserComment").click(function(){
+			$("#demo #list").empty();
+			$("#demo").css("display","block");
+			var id=$(this).parent().siblings().first().text();
+
+			var url="你的查看用户评论列表的url";
+
+			$.post(url,{
+				 userId:id
+			 },
+			 function(json){
+				
+					$str="<table style='border:1px;'>";	
+					$str+="<tr>";
+					$str+="<td>"+"需求ID"+"</td>"; //需求id
+					$str+="<td>"+"评论内容"+"</td>";  //评论内容
+					$str+="<td>"+"评论时间"+"</td>";    //评论时间
+					$str+="</tr>";
+					for (var i=0;i<json.length ;i++ )
+					{
+					$str+="<tr>";
+					$str+="<td>"+json[i].commentDemandId+"</td>"; //需求id
+					$str+="<td>"+json[i].commentContent+"</td>";  //评论内容
+					$str+="<td>"+json[i].commentTime+"</td>";    //评论时间
+					$str+="</tr>";
+					}
+					$str+="</table>";
+					$("#demo").append($str); 
+			});
+			$("#close").click(function(){
+				$("#demo").css("display","none");
+			 });
+	});
+
+
+
+
+	//查看请求列表
+ $(".popUserRequest").click(function(){
+			$("#demo #list").empty();
+			$("#demo").css("display","block");
+			var id=$(this).parent().siblings().first().text();
+
+			var url="你的查看用户请求列表的url";
+
+			$.post(url,{
+				 userId:id
+			 },
+			 function(json){
+				
+					$str="<table style='border:1px;'>";	
+					$str+="<tr>";
+					$str+="<td>"+"需求ID"+"</td>"; //需求id
+					$str+="<td>"+"请求时间"+"</td>";  //请求时间
+					$str+="<td>"+"请求内容"+"</td>";    //请求内容
+					$str+="<td>"+"请求状态"+"</td>";    //请求状态
+					$str+="</tr>";
+					for (var i=0;i<json.length ;i++ )
+					{
+					$str+="<tr>";
+					$str+="<td>"+json[i].requestDemandId+"</td>"; //需求id
+					$str+="<td>"+json[i].requestTime+"</td>";  //请求时间
+					$str+="<td>"+json[i].requestMessage+"</td>";    //请求内容
+					$str+="<td>"+json[i].requestStatus+"</td>";    //请求状态
+					$str+="</tr>";
+					}
+					$str+="</table>";
+					$("#demo").append($str); 
+			});
+			$("#close").click(function(){
+				$("#demo").css("display","none");
+			 });
+	});
+
+
+	//查看聊天列表
+$(".popUserChat").click(function(){
+			$("#demo #list").empty();
+			$("#demo").css("display","block");
+			var id=$(this).parent().siblings().first().text();
+
+			var url="你的查看用户聊天列表的url";
+
+			$.post(url,{
+				 userId:id
+			 },
+			 function(json){
+				
+					$str="<table style='border:1px;'>";	
+					$str+="<tr>";
+					$str+="<td>"+"寄送聊天用户id"+"</td>"; //寄送聊天用户id
+					$str+="<td>"+"收到聊天用户id"+"</td>";  //收到聊天用户id
+					$str+="<td>"+"聊天时间"+"</td>";    //聊天时间
+					$str+="<td>"+"聊天信息"+"</td>";    //聊天信息
+					$str+="</tr>";
+					for (var i=0;i<json.length ;i++ )
+					{
+					$str+="<tr>";
+					$str+="<td>"+json[i].charFrom+"</td>"; //寄送聊天用户id
+					$str+="<td>"+json[i].charTo+"</td>";  //收到聊天用户id
+					$str+="<td>"+json[i].charTime+"</td>";    //聊天时间
+					$str+="<td>"+json[i].charMessage+"</td>";    //聊天信息
+					$str+="</tr>";
+					}
+					$str+="</table>";
+					$("#demo").append($str); 
+			});
+			$("#close").click(function(){
+				$("#demo").css("display","none");
+			 });
+	});
+
+	//查看帖子列表
+
+	$(".popUserPost").click(function(){
+			$("#demo #list").empty();
+			$("#demo").css("display","block");
+			var id=$(this).parent().siblings().first().text();
+
+			var url="你的查看用户帖子列表的url";
+
+			$.post(url,{
+				 userId:id
+			 },
+			 function(json){
+				
+					$str="<table style='border:1px;'>";	
+					$str+="<tr>";
+					$str+="<td>"+"需求标题"+"</td>"; //需求标题
+					$str+="<td>"+"需求类型"+"</td>";  //需求类型
+					$str+="<td>"+"需求愿意付出的价格"+"</td>";    //需求愿意付出的价格
+					$str+="<td>"+"需求发布时间"+"</td>";    //需求发布时间
+					$str+="<td>"+"需求状态"+"</td>";    //需求状态
+					$str+="</tr>";
+					for (var i=0;i<json.length ;i++ )
+					{
+					$str+="<tr>";
+					$str+="<td>"+json[i].demandTitle+"</td>"; //需求标题
+					$str+="<td>"+json[i].demandType+"</td>";  //需求类型
+					$str+="<td>"+json[i].demandPay+"</td>";    //需求愿意付出的价格
+					$str+="<td>"+json[i].demandTime+"</td>";    //需求发布时间
+					$str+="<td>"+json[i].demandStatus+"</td>";    //需求状态
+					$str+="</tr>";
+					}
+					$str+="</table>";
+					$("#demo").append($str); 
+			});
+			$("#close").click(function(){
+				$("#demo").css("display","none");
+			 });
+	});
+
+
+	//删除该用户
+	$(".display").find("tbody").on('click', '.delUser', function(){
+		var i=this.parentNode.parentNode.rowIndex;
+		var id=$(this).parent().parent().parent().parent().attr("id");
+		var userId=$(this).parent().siblings().first().text();
+		document.getElementById(id).deleteRow(i);
+
+		//将删除行的id传给后台
+		var url="你的删除用户的url";
+
+		$.post(url,
+	   {
+		id:userId
+	   });
+
+	  });
+
+
+
+});

@@ -1,0 +1,179 @@
+body{
+margin:0;}
+
+#head{
+width:100%;
+height:70px;
+background:#0095dd;
+position:fixed;
+padding:20px;
+}
+
+.left{
+font-size:25px;
+color:white;
+font-family:ºÚÌå;
+}
+
+.right{
+font-size:18px;
+color:white;
+font-family:Î¢ÈíÑÅºÚ;
+}
+
+#head-left{
+float:left;
+}
+
+#head-right {
+float:right;
+color:white;
+font-size:15px;
+}
+#head-right a{
+color:white;
+}
+#head-right a:hover{
+color:#0095dd;
+background:white;
+border:1px white solid;
+}
+#head-right span{
+margin-right:20px;
+margin-top:10px;
+}
+
+#ManageList{
+width:100%;
+height:45px;
+background:#f0f0f0;
+color:#313131;
+line-height:45px;
+font-size:20px;
+}
+
+#mynav{
+width:20%;
+height:700px;
+float:left;
+position:fixed;
+top:70px;
+border-right:1px #b4b4b4 solid;
+background:#efefef;
+}
+#mynav ul li span{
+float:right;
+}
+.Nav a{color:#575757;background:#efefef;height:48px;width:100%;}
+.Nav a:hover{color:#0095dd;
+background:white;}
+#time{
+width:75%;
+height:35px;
+float:right;
+background:#f0f0f0;
+color:black;
+margin-right:10%;
+padding:8px;
+font-size:10px;
+margin-top:15px;
+}
+
+#mynav ul li{
+color:#333333;
+height:50px;
+line-height:50px;
+font-size:16px;
+border-bottom:2px #d5d5d5 solid ;}
+.zinav{
+width:80%;
+height:46px;
+padding:5px;
+left:20%;
+position:fixed;
+top:70px;
+color:#333333;
+background:#f0f0f0;
+}
+.zinav li a{
+color:#575757;}
+.zinav li a:hover{
+color:#0095dd;}
+.display{
+width:80%;
+min-height:500px;
+background:white;
+padding:15px;
+position:absolute;
+right:0;
+top:116px;
+display:none;
+z-index:-1;
+}
+
+#chat,#admin,#system,#marquee,#post{
+display:none;}
+
+#searchUser{
+display:block;
+}
+
+#foot{
+width:100%;
+height:40px;
+background:#0095dd;
+position:fixed;
+bottom:0;
+color:white;
+line-height:50px;
+text-align:center;
+}
+
+ p{
+font-size:15px;
+color:gray;
+}
+#searchUser  hr{
+color:red;
+height:5px;
+}
+#postEdit{
+width:80%;
+margin:0 auto;
+}
+
+#userReport_1{ display:none;
+overflow:scroll;
+}
+#checkUserTable{  display:none;overflow:scroll;
+}
+#postReport_1{ display:none;overflow:scroll;
+}
+#postReport_2{  display:none;overflow:scroll;
+}
+
+
+#demo{
+	width:33%;
+	height:600px;
+	padding:10px;
+	background:#e4fce7;
+	border:1px #b7b7b7 solid;
+	overflow:scroll;
+	position:absolute;
+	left:35%;
+	min-width:400px;
+	top:5%;
+	z-index:10;
+	display:none;
+	}
+	#close{
+	float:right;
+	width:25px;
+	height:25px;
+	padding:5px;
+	}
+	#close:hover{
+	background:#ff9900;
+	color:white;
+	}
